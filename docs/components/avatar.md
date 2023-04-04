@@ -1,5 +1,6 @@
 <script setup>
 import AvatarExample from './avatar/examples/AvatarExample.vue'
+import AvatarImageErrorPlaceholderFallbackExample from './avatar/examples/AvatarImageErrorPlaceholderFallbackExample.vue'
 import AvatarBorderedExample from './avatar/examples/AvatarBorderedExample.vue'
 import AvatarDotIndicatorExample from './avatar/examples/AvatarDotIndicatorExample.vue'
 import AvatarSizeExample from './avatar/examples/AvatarSizeExample.vue'
@@ -27,6 +28,22 @@ import { Avatar } from 'flowbite-vue'
         <Avatar status="online" img="https://flowbite.com/docs/images/people/profile-picture-5.jpg" />
         <Avatar status="online" rounded img="https://flowbite.com/docs/images/people/profile-picture-5.jpg" />
     </div>
+</template>
+```
+
+## Image Error Handling
+This example shows that the `Avatar` will fall back to the placeholder icon in case there is any error locaing the specified `img`. 
+
+<AvatarImageErrorPlaceholderFallbackExample />
+
+```vue
+<script setup>
+import { Avatar } from 'flowbite-vue'
+</script>
+<template>
+  <div class="vp-raw flex">
+    <Avatar status="online" img="https://flowbite.com/docs/images/people/profile-picture-not-found.jpg" />
+  </div>
 </template>
 ```
 
