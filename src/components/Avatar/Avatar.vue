@@ -6,7 +6,7 @@
       </svg>
       <div v-else :class="avatarPlaceholderInitialsClasses">{{ initials }}</div>
     </div>
-    <img v-else :class="avatarClasses" :src="img" :alt="alt">
+    <img v-else :class="avatarClasses" :src="img" :alt="alt" @error="emitError">
     <span v-if="status" :class="avatarDotClasses" :data-pos="statusPosition"></span>
   </div>
 </template>
@@ -15,6 +15,12 @@ import { toRefs } from 'vue'
 import type { PropType } from 'vue'
 import type { AvatarSize, AvatarStatus, AvatarStatusPosition } from './types'
 import { useAvatarClasses } from '@/components/Avatar/composables/useAvatarClasses'
+
+const emit = defineEmits(['error:img'])
+
+function emitError(): void {
+  emit('error:img')
+}
 
 const props = defineProps({
   alt: {

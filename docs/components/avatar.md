@@ -1,5 +1,6 @@
 <script setup>
 import AvatarExample from './avatar/examples/AvatarExample.vue'
+import AvatarImageErrorHandlerExample from './avatar/examples/AvatarImageErrorHandlerExample.vue'
 import AvatarBorderedExample from './avatar/examples/AvatarBorderedExample.vue'
 import AvatarDotIndicatorExample from './avatar/examples/AvatarDotIndicatorExample.vue'
 import AvatarSizeExample from './avatar/examples/AvatarSizeExample.vue'
@@ -27,6 +28,30 @@ import { Avatar } from 'flowbite-vue'
         <Avatar status="online" img="https://flowbite.com/docs/images/people/profile-picture-5.jpg" />
         <Avatar status="online" rounded img="https://flowbite.com/docs/images/people/profile-picture-5.jpg" />
     </div>
+</template>
+```
+
+## Image Error Handler
+Use this example to handle errors loading the `img` element, and display another `Avatar` instead.
+
+<AvatarImageErrorHandlerExample />
+
+```vue
+<script setup>
+import { Avatar } from 'flowbite-vue'
+import { ref } from 'vue'
+
+let imageError = ref(false)
+
+function imageErrorHandler() {
+    imageError.value = true
+}
+</script>
+<template>
+  <div class="vp-raw flex">
+    <Avatar v-if="!imageError" status="online" img="https://flowbite.com/docs/images/people/profile-picture-not-found.jpg" @error:img="imageErrorHandler" />
+    <Avatar v-else status="online" rounded />
+  </div>
 </template>
 ```
 
